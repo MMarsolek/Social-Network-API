@@ -18,8 +18,8 @@ module.exports = {
   },
 //Delete friend
   deleteFriend(req, res) {
-    User.updateOne({ _id: req.params.userId }, {$pullAll: {
-        _id: req.params.friendsId
+    User.updateOne({ _id: req.params.userId }, {$pull: {
+      friends: req.params.friendsId
     }},{new: true}).then((user) => res.json(user))
     .catch((err) => res.status(500).json(err));
   },
