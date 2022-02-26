@@ -1,5 +1,6 @@
 const { red } = require('color-name');
-const { User } = require('../models/users');
+const Thought = require('../models/thoughts');
+const User  = require('../models/users');
 
 module.exports = {
     //get all friends
@@ -11,27 +12,27 @@ module.exports = {
   // create a new user
   addFriend(req, res) {
     User.updateOne({ _id: req.params.userId }, {$push: {
-        _id: req.params.friendsId
-    }}).then(res.json(User))
+        friends: req.params.friendsId
+    }},{new: true}).then((user) => res.json(user))
     .catch((err) => res.status(500).json(err));
   },
 //Delete friend
   deleteFriend(req, res) {
     User.updateOne({ _id: req.params.userId }, {$pullAll: {
         _id: req.params.friendsId
-    }}).then(res.json(User))
+    }},{new: true}).then((user) => res.json(user))
     .catch((err) => res.status(500).json(err));
   },
     //get a User
-    getAllUsers(req, res) {
-      User.findById(req.body)
+    getSingleUser(req, res) {
+      User.findById(req.params.userId)
         .then((user) => res.json(user))
         .catch((err) => res.status(500).json(err));
     },
 
   //getAllUsers
   getAllUsers(req, res) {
-    User.find()
+    User.find({})
       .then((user) => res.json(user))
       .catch((err) => res.status(500).json(err));
   },
@@ -40,7 +41,11 @@ module.exports = {
   deleteUser(req, res) {
     console.log(req.params.userId);
     User.deleteOne({ _id: req.params.userId })
-    .then(res.json(User))
+    .then(function(){
+        Thought.deleteMany({reactions: {userId: req.body.params}});
+        Thought.deleteMany({_id: req.params.userId })
+        res.json('Deleted')
+    })
     .catch((err) => res.status(500).json(err));
   },
 
@@ -53,9 +58,8 @@ module.exports = {
 
   // Update User data
   updateUser(req, res){
-    User.updateOne({ _id: req.params.userId },
+    User.findByIdAndUpdate(req.params.userId,
       req.body
-    )
-    res.json(User);
+    ).then((user) => res.json(user))
   }
 };

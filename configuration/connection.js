@@ -6,5 +6,5 @@ mongoose.connect('mongodb://127.0.0.1:27017/socialNetworkDB', {
     useUnifiedTopology: true
 });
 
-// Exports connection
+// Exports connection4
 module.exports = mongoose.connection;
