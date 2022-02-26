@@ -10,6 +10,38 @@ There is seed data that can be accessed by running 'npm run seed'
 ## How to use
 Make sure you follow the correct route and the correct fetch type when making requests. The nodemon npm package is optional and will allow you to restart the server after any changes have been made. 
 
+
+https://user-images.githubusercontent.com/75141165/155826117-f8cab38e-f046-4e17-a076-cd705838928f.mp4
+
+
+
+https://user-images.githubusercontent.com/75141165/155826317-335d0335-e3c3-467c-bf7f-8334e837e57f.mp4
+
+
+
+usercontent.com/75141165/155826311-2e66935e-9849-49a2-a619-22af1289b523.mp4
+
+
+
+https://user-images.githubusercontent.com/75141165/155826377-85e71ff3-2f37-46a7-b558-7870fff9b202.mp4
+
+
+
+https://user-images.githubusercontent.com/75141165/155828187-6eb76d7e-c44b-43e3-bb66-7e8f1d3d7b10.mp4
+
+
+
+
+https://user-images.githubusercontent.com/75141165/155826615-f8de484f-e88b-45c2-a344-3dc5e774fa46.mp4
+
+
+
+
+
+
+https://user-images.github
+
+
 ## Dependencies
 npm i mongoose, npm i monodb, npm i express , and npm i nodemon 
 
